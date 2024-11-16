@@ -7,7 +7,7 @@ Authors: Esther Chung & Mythri Kishore
 
 ## Data Cleaning and Exploratory Data Analysis
 <iframe
-  src="../assets/ratingdist.html"
+  src="/RecipeAnalysis/assets/ratingdist.html"
   width="800"
   height="600"
   frameborder="0"
