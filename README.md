@@ -98,7 +98,6 @@ This pivot table gives us information about the mean, count, minimum, and maximu
 | 2018-12-17 |            0.75     |              3.25    |                    6 |                     4 |            1.83333 |                   5 |          0.1       |                   1 |
 | 2018-12-18 |            0.526389 |              4.41667 |                   12 |                    12 |            1.5     |                   5 |          0.0833333 |                   1 |
 | 2018-12-19 |            0.708333 |              4.6     |                    6 |                     5 |            1.08333 |                   5 |          0.5       |                   4 |
-       1.08333 |                   5 |          0.5       |                   4 |
 
 ## Assessment of Missingness
 
