@@ -118,7 +118,7 @@ The observed statistic turned out to be 51.452, as shown on the red line. Our p-
 <iframe
   src="/RecipeAnalysis/assets/missingminutes.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
