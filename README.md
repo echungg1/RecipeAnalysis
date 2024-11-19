@@ -83,7 +83,7 @@ We examined the `hours` column as it relates to the number of ingredients(`n_ing
 
 ### Pivot Table
 
-test description
+This pivot table gives us information about the mean, count, minimum, and maximum for `rating` and `hours` for each rating interaction (indexed by `date`). We can gain insights regarding the time of year’s influence on rating and the length of cooking time required for a recipe. 
 
 | Date       |   ('mean', 'hours') |   ('mean', 'rating') |   ('count', 'hours') |   ('count', 'rating') |   ('max', 'hours') |   ('max', 'rating') |   ('min', 'hours') |   ('min', 'rating') |
 |------------|--------------------:|---------------------:|---------------------:|----------------------:|-------------------:|--------------------:|-------------------:|--------------------:|
@@ -99,3 +99,44 @@ test description
 | 2018-12-18 |            0.526389 |              4.41667 |                   12 |                    12 |            1.5     |                   5 |          0.0833333 |                   1 |
 | 2018-12-19 |            0.708333 |              4.6     |                    6 |                     5 |            1.08333 |                   5 |          0.5       |                   4 |
        1.08333 |                   5 |          0.5       |                   4 |
+
+## Assessment of Missingness
+
+### NMAR Analysis
+A column that we believe is NMAR is `rating`. To be NMAR means that we have to look at the values of the column themselves to understand the missingness. Rating might be NMAR because reviewers may have been more hesitant to leave ratings when they don’t feel any strong emotion regarding the recipe. In other words, reviewers may be more likely to leave a rating if they either hate or love the recipe. 
+
+Some more additional data that could help explain the missingness of the `rating` column could be their comment frequency. This is because it could explain if a user is comfortable with leaving ratings on recipes. 
+
+### Missingness Dependency 
+**Null Hypothesis**: The missingness of ratings does not depend on the cooking time of the recipe in minutes.
+
+**Alternate Hypothesis**: The missingness of ratings does depend on the cooking time of the recipe in minutes.
+
+**Test Statistic**: The absolute difference of mean in cooking time of the recipe in minutes of the distribution of the group without missing ratings and the distribution of the group with missing ratings.
+
+**Significance Level**: 0.01
+The observed statistic turned out to be 51.452, as shown on the red line. Our p-value of 0.107 was above the significance level of 0.01, so we fail to reject the null hypothesis. This tells us that `ratings` is not MAR dependent on the `minutes` column. 
+<iframe
+  src="/RecipeAnalysis/assets/missingminutes.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+**Null Hypothesis**: The missingness of ratings does not depend on the number of steps of the recipe.
+
+**Alternate Hypothesis**: The missingness of ratings does depend on the number of steps of the recipe.
+
+**Test Statistic**: The absolute difference of mean in the number of steps of the recipe of the distribution of the group without missing ratings and the distribution of the group with missing ratings.
+	
+**Significance Level**: 0.01
+The observed statistic turned out to be 1.339, as shown on the red line. Our p-value of 0.0 was below the significance level of 0.01, so we reject the null hypothesis. This tells us that `ratings` is MAR dependent on `n_steps`.
+<iframe
+  src="/RecipeAnalysis/assets/missingnsteps.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
+
