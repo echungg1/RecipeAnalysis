@@ -29,6 +29,7 @@ The `ratings` dataset contains 731927 rows. There are 5 columns: `['user_id', 'r
 |-------------|-------------|
 | `recipe_id`       | Recipe ID     |
 | `rating`       | Rating given     |
+| `date`       | Date of interaction     |
 
 
 
