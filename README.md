@@ -32,12 +32,24 @@ The `ratings` dataset contains 731927 rows. There are 5 columns: `['user_id', 'r
 
 
 ## Data Cleaning and Exploratory Data Analysis
-<iframe
-  src="/RecipeAnalysis/assets/ratingdist.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
+
+### Data Cleaning
+These were the steps we followed to clean our dataframe:
+1. Left merge the `recipe` and `ratings`  on `id` and `recipe_id`.
+   - We merged to match the recipes to their corresponding ratings. The left merge preserves all the recipes, even the ones with no rating. 
+2. Replace all 0 ratings with np.nan
+   - Ratings are generally (and specifically on [food.com](https://www.food.com/?ref=nav)) are on a scale of 1-5, thus it is impossible for a reviewer to give a recipe 0 stars. This was also important because we needed to calculate the `average_rating` for each recipe. If missing values were stored as 0s, this would introduce bias for the mean (pull it down).
+3. Create `average_rating` column
+   -  This transformation helps provide a more thorough understanding of the ratings for each recipe, especially since we know that one rating is probably not representative of a recipe’s performance.
+4. Transform `minutes` column into `hours`
+   - We noticed that some recipes had a large number for `minutes`. Having this stored as hours can be easier to interpret for humans viewing the dataframe.
+5. Handle missing values
+   - There were some columns with missing values. The`'name` column has 1 missing value but we can disregard it since it doesn't relate to our analysis. We can notice a similar thing for the `description` and `user_id` column. We will keep all the null values for `rating`, `review`, and `average_rating` because it could give us more information about the success of a recipe.
+6. Removing outliers using IQR
+   - There were several recipes in this dataset that had unusually high cooking times, most often due to a recipe that was a [joke](https://www.food.com/recipe/how-to-preserve-a-husband-447963). We removed outliers using the IQR method, but we chose to only exclude values above the upper bound. 
+
+
+Our cleaned dataframe had 210138 rows and 19 columns. The first 5 rows with some important columns are displayed below: 
 
 | name                                 |     id |   minutes |    hours |   rating |   n_steps |   n_ingredients | submitted   |   average_rating | description                                                                                                                                                                                                                                                                                                                                                                       |
 |:-------------------------------------|-------:|----------:|---------:|---------:|----------:|----------------:|:------------|-----------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -47,8 +59,25 @@ The `ratings` dataset contains 731927 rows. There are 5 columns: `['user_id', 'r
 | 412 broccoli casserole               | 306168 |        40 | 0.666667 |        5 |         6 |               9 | 2008-05-30  |                5 | since there are already 411 recipes for broccoli casserole posted to "zaar" ,i decided to call this one  #412 broccoli casserole.i don't think there are any like this one in the database. i based this one on the famous "green bean casserole" from campbell's soup. but i think mine is better since i don't like cream of mushroom soup.submitted to "zaar" on may 28th,2008 |
 | 412 broccoli casserole               | 306168 |        40 | 0.666667 |        5 |         6 |               9 | 2008-05-30  |                5 | since there are already 411 recipes for broccoli casserole posted to "zaar" ,i decided to call this one  #412 broccoli casserole.i don't think there are any like this one in the database. i based this one on the famous "green bean casserole" from campbell's soup. but i think mine is better since i don't like cream of mushroom soup.submitted to "zaar" on may 28th,2008 |
 
+### Univariate Analysis
+We examined the distribution of `rating`. We noticed that it was skewed left, showing that more recipes tended to be rated higher. As `rating` increased, the number of recipes in that rating category increased as well. This could be due to the fact that people are afraid to degrade other people’s hard work. 
+
+<iframe
+  src="/RecipeAnalysis/assets/ratingdist.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
+### Bivariate Analysis
+We examined the `hours` column as it relates to the number of ingredients(`n_ingredients`). We can notice that there is a general positive trend. As the number of ingredients increases, the cooking time typically increases as well. This follows our intuition that more complicated recipes involve more ingredients and will take longer to complete. Later, we will further explore this relationship.
 
+<iframe
+  src="/RecipeAnalysis/assets/hrsingredients.html"
+  width="600"
+  height="600"
+  frameborder="0"
+></iframe>
 
-
+### Pivot Table
