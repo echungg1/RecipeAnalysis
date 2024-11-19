@@ -1,4 +1,4 @@
-# Analyzing Recipe Ratings and Preparation Times
+# Cooking Up Insights - Analyzing Recipe Ratings and Preparation Times
  
 
 Authors: Esther Chung & Mythri Kishore
@@ -155,3 +155,13 @@ Our observed statistic was 0.0265. Our p-value was 0.0. Thus, we reject the null
 It is important to understand this relationship because it provides insights into people’s sentiment after investing time into short and long recipes. In other words, people who tried out a recipe with a longer cooking time could be more upset than people who tried out a recipe with a shorter cooking time, if the recipe didn’t turn out as good as expected. Using mean absolute difference is a good choice in this instance, because we are just seeing if there is a difference in the distributions and we do not care about directionality. We chose a significance level of 0.01 because this provides a strict framework to evaluate our hypotheses against, while also following typical statistical procedures.
 
 ## Framing a Prediction Problem
+**We will be predicting the cooking time that a recipe takes(in minutes).** This is a regression problem since cooking time, the response variable, is quantitative. We chose `minutes` as the response variable because it is representative of a recipe. Earlier, we also saw that there was a positive relationship between cooking time and number of ingredients. Cooking time is impacted by several factors in a recipe, so it would be a good response variable to create a prediction problem with.
+
+The metric we are using to evaluate our model with is **root mean squared error (RMSE)**. We chose this because we are performing a linear regression and RMSE is telling of how “accurate” our model is.
+
+At the time of prediction we would not have information about a person’s review and rating. In other words, we only “know” information provided by the recipe and its author.
+
+## Baseline Model
+As stated above, our baseline model will be predicting cooking time (in minutes) based on the number of steps and number of ingredients using linear regression. Both of these features are quantitative. To encode both features, we transformed the values by standardizing them using `StandardScaler()`. 
+
+The RMSE of our baseline model was 21.736 minutes. In order to analyze the performance of our model, we must consider the context of the data. There is a large range of values for cooking time, and since we removed outliers our RMSE explains that the model is able to predict cooking time well. However, we can definitely make improvements (reduce RMSE) by using more features. 
