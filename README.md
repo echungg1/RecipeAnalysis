@@ -24,6 +24,7 @@ The `recipe` dataset contains 83782 rows. There are 12 columns: `['name', 'id', 
 
 
 The `ratings` dataset contains 731927 rows. There are 5 columns: `['user_id', 'recipe_id', 'date', 'rating', 'review']`. The columns relevant to our question are:
+
 | Column     | Description    |
 |-------------|-------------|
 | `recipe_id`       | Recipe ID     |
@@ -57,7 +58,7 @@ Our cleaned dataframe had 210138 rows and 19 columns. The first 5 rows with some
 | 1 in canada chocolate chip cookies   | 453467 |        45 | 0.75     |        5 |        12 |              11 | 2011-04-11  |                5 | this is the recipe that we use at my school cafeteria for chocolate chip cookies. they must be the best chocolate chip cookies i have ever had! if you don't have margarine or don't like it, then just use butter (softened) instead.                                                                                                                                            |
 | 412 broccoli casserole               | 306168 |        40 | 0.666667 |        5 |         6 |               9 | 2008-05-30  |                5 | since there are already 411 recipes for broccoli casserole posted to "zaar" ,i decided to call this one  #412 broccoli casserole.i don't think there are any like this one in the database. i based this one on the famous "green bean casserole" from campbell's soup. but i think mine is better since i don't like cream of mushroom soup.submitted to "zaar" on may 28th,2008 |
 | 412 broccoli casserole               | 306168 |        40 | 0.666667 |        5 |         6 |               9 | 2008-05-30  |                5 | since there are already 411 recipes for broccoli casserole posted to "zaar" ,i decided to call this one  #412 broccoli casserole.i don't think there are any like this one in the database. i based this one on the famous "green bean casserole" from campbell's soup. but i think mine is better since i don't like cream of mushroom soup.submitted to "zaar" on may 28th,2008 |
-| 412 broccoli casserole               | 306168 |        40 | 0.666667 |        5 |         6 |               9 | 2008-05-30  |                5 | since there are already 411 recipes for broccoli casserole posted to "zaar" ,i decided to call this one  #412 broccoli casserole.i don't think there are any like this one in the database. i based this one on the famous "green bean casserole" from campbell's soup. but i think mine is better since i don't like cream of mushroom soup.submitted to "zaar" on may 28th,2008 |
+| 412 broccoli casserole               | 306168 |        40 | 0.666667 |        5 |         6 |               9 | 2008-05-30  |                5 | since there are already 411 recipes for broccoli casserole posted to "zaar" ,i decided to call this one  #412 broccoli casserole.i don't think there are any like this one in the database. i based this one on the famous "green bean casserole" from campbell's soup. but i think mine is better since i don't like cream of mushroom soup.submitted to "zaar" on may 28th,2008 |`
 
 ### Univariate Analysis
 We examined the distribution of `rating`. We noticed that it was skewed left, showing that more recipes tended to be rated higher. As `rating` increased, the number of recipes in that rating category increased as well. This could be due to the fact that people are afraid to degrade other people’s hard work. 
@@ -68,7 +69,6 @@ We examined the distribution of `rating`. We noticed that it was skewed left, sh
   height="600"
   frameborder="0"
 ></iframe>
-
 
 ### Bivariate Analysis
 We examined the `hours` column as it relates to the number of ingredients(`n_ingredients`). We can notice that there is a general positive trend. As the number of ingredients increases, the cooking time typically increases as well. This follows our intuition that more complicated recipes involve more ingredients and will take longer to complete. Later, we will further explore this relationship.
