@@ -7,7 +7,7 @@ Authors: Esther Chung & Mythri Kishore
 ## Introduction
 In this day and age, food consumes us. We constantly see food in the world around us which drives a passion for food for many people, including us! This dataset is a subset of food recipes and ratings from the website [food.com](https://www.food.com/?ref=nav). The data has been collected since 2008, thus we are using a subset of it.
 
-In our busy lives, we need to prioritize where we dedicate our time for passions and work. Our project is centered around answer the question: **How is cooking time impacted by different aspects of recipes?** It is important to understand ways to manage your time in order to be a well-rounded person. This dataset is important because it can provide insight into these tendencies and help recipe makers and readers alike. Recipe makers can understand what aspects of a recipe can impact the success of their recipe. For readers, it can help them better allocate their time in their schedule.
+In our busy lives, we need to prioritize where we dedicate our time for passions and work. Our project is centered around answer the question: **How is rating and cooking time impacted by different aspects of recipes?** It is important to understand ways to manage your time in order to be a well-rounded person. This dataset is important because it can provide insight into these tendencies and help recipe makers and readers alike. Recipe makers can understand what aspects of a recipe can impact the success of their recipe. For readers, it can help them better allocate their time in their schedule.
 
 The `recipe` dataset contains 83782 rows. There are 12 columns: `['name', 'id', 'minutes', 'contributor_id', 'submitted', 'tags', 'nutrition', 'n_steps', 'steps', 'description', 'ingredients', 'n_ingredients']`. The columns that are important to our question are: 
 
@@ -67,7 +67,7 @@ We examined the distribution of `rating`. We noticed that it was skewed left, sh
 <iframe
   src="/RecipeAnalysis/assets/ratingdist.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -77,7 +77,7 @@ We examined the `hours` column as it relates to the number of ingredients(`n_ing
 <iframe
   src="/RecipeAnalysis/assets/hrsingredients.html"
   width="600"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -133,9 +133,25 @@ The observed statistic turned out to be 1.339, as shown on the red line. Our p-v
 <iframe
   src="/RecipeAnalysis/assets/missingnsteps.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
+## Hypothesis Testing
 
+**Null Hypothesis**: There is no significant difference in the ratings between groups of recipes with short and long cooking times(minutes).
 
+**Alternate Hypothesis**: There is a significant difference in the ratings between groups of recipes with short and long cooking times(minutes).
+
+**Test Statistic**: The absolute difference of mean in the cooking time of the recipe (in minutes) of the distribution of the group without missing ratings and the distribution of the group with missing ratings.
+
+**Significance Level**: 0.01
+
+The relevant columns are 'rating' and 'minutes'. We chose a **permutation test** since we have two clear groups (short vs. long cooking times) that we can shuffle labels between. 
+
+### Conclusion
+Our observed statistic was 0.0265. Our p-value was 0.0. Thus, we reject the null hypothesis. This means that we can't say that there is no significant difference in the ratings between groups of recipes with short and long cooking times.
+
+It is important to understand this relationship because it provides insights into people’s sentiment after investing time into short and long recipes. In other words, people who tried out a recipe with a longer cooking time could be more upset than people who tried out a recipe with a shorter cooking time, if the recipe didn’t turn out as good as expected. Using mean absolute difference is a good choice in this instance, because we are just seeing if there is a difference in the distributions and we do not care about directionality. We chose a significance level of 0.01 because this provides a strict framework to evaluate our hypotheses against, while also following typical statistical procedures.
+
+## Framing a Prediction Problem
