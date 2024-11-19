@@ -23,6 +23,12 @@ The `recipe` dataset contains 83782 rows. There are 12 columns: `['name', 'id', 
 | `description`       | User-provided description      |
 
 
+The `ratings` dataset contains 731927 rows. There are 5 columns: `['user_id', 'recipe_id', 'date', 'rating', 'review']`. The columns relevant to our question are:
+| Column     | Description    |
+|-------------|-------------|
+| `recipe_id`       | Recipe ID     |
+| `rating`       | Rating given     |
+
 
 
 ## Data Cleaning and Exploratory Data Analysis
