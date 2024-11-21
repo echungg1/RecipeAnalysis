@@ -165,3 +165,14 @@ At the time of prediction we would not have information about a person’s revie
 As stated above, our baseline model will be predicting cooking time (in minutes) based on the number of steps and number of ingredients using linear regression. Both of these features are quantitative. To encode both features, we transformed the values by standardizing them using `StandardScaler()`. 
 
 The RMSE of our baseline model was 21.736 minutes. In order to analyze the performance of our model, we must consider the context of the data. There is a large range of values for cooking time, and since we removed outliers our RMSE explains that the model is able to predict cooking time well. However, we can definitely make improvements (reduce RMSE) by using more features. 
+
+## Final Model
+In addition to our baseline model which utilized standardized number of ingredients and number of steps to predict minutes, we added two new features.
+
+One of the features we added was `is_december`. This extracted the month from the `submitted` column and one-hot encoded the values (stored a 1 or 0 to represent if the month the recipe was published was December or not). This feature is important for our prediction task of predicting the cooking time in minutes since seasonal trends may affect cooking behaviors. For example, there may be shorter recipes to account for holiday busyness or more time consuming recipes for holiday meals. It is important to account for this when predicting cooking time. 
+
+Our second new feature was `len_description` which stored the length of the description of a recipe. This is a useful feature since the length of a recipe description can provide insights on the complexity of a recipe. For example, more descriptive recipes may involve additional steps or specialized techniques, leading to longer cooking times.
+
+The modeling algorithm we chose was polynomial regression utilizing all of the aforementioned features. To select the best degree hyperparameter we used `GridSearchCV`. Our initial instinct led us to have `GridSearchCV` test degrees 1, 2, and 3. When this was performed it picked degree 3, so we were inclined to add more options greater than degree 3 while still being wary that a higher degree could overfit. So we updated the hyperparameter options to degrees 1, 2, 3, 4, and 5. The hyperparameter that ended up performing the best was degree 4. Its RMSE for cross validation was 21.279 minutes.
+
+Our Final Model improved compared to our Baseline Model’s performance. For the Final Model, the test RMSE was 21.309 minutes. Comparing the RMSEs we see a decrease of 0.427 minutes. This shows that the Final Model did **improve** since the RMSE decreased. 
