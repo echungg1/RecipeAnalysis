@@ -178,6 +178,17 @@ The modeling algorithm we chose was polynomial regression utilizing all of the a
 Our Final Model improved compared to our Baseline Model’s performance. For the Final Model, the test RMSE was 21.309 minutes. Comparing the RMSEs we see a decrease of 0.427 minutes. This shows that the Final Model did **improve** since the RMSE decreased. 
 
 ## Fairness Analysis
+Our choice for Group X is recipes with short cooking times, and our choice for Group Y is recipes with long cooking times. We added a column called `time_group` to store `’short’` and `’long’` based on if the cooking time was less than or greater than the median cooking time (minutes). Our evaluation metric is RMSE since our model was a linear regression model.
+
+**Null Hypothesis**: The model is fair. The RMSE of the model for short recipes and long recipes is the same.
+
+**Alternative Hypothesis**: The model is unfair. The RMSE of the model for short recipes is significantly different from the RMSE for long recipes.
+
+**Test Statistic**: Absolute difference in RMSEs between short and long recipes.
+
+**Significance Level**: 0.01
+
+Our observed statistic was 8.402. Our p-value was 0.0. Thus, we reject the null hypothesis that our model is fair. It is important to know how our model behaves differently for two groups.
 
 <iframe
   src="/RecipeAnalysis/assets/fairness.html"
