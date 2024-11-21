@@ -176,3 +176,12 @@ Our second new feature was `len_description` which stored the length of the desc
 The modeling algorithm we chose was polynomial regression utilizing all of the aforementioned features. To select the best degree hyperparameter we used `GridSearchCV`. Our initial instinct led us to have `GridSearchCV` test degrees 1, 2, and 3. When this was performed it picked degree 3, so we were inclined to add more options greater than degree 3 while still being wary that a higher degree could overfit. So we updated the hyperparameter options to degrees 1, 2, 3, 4, and 5. The hyperparameter that ended up performing the best was degree 4. Its RMSE for cross validation was 21.279 minutes.
 
 Our Final Model improved compared to our Baseline Model’s performance. For the Final Model, the test RMSE was 21.309 minutes. Comparing the RMSEs we see a decrease of 0.427 minutes. This shows that the Final Model did **improve** since the RMSE decreased. 
+
+## Fairness Analysis
+
+<iframe
+  src="/RecipeAnalysis/assets/fairness.html"
+  width="800"
+  height="400"
+  frameborder="0"
+></iframe>
