@@ -67,7 +67,7 @@ We examined the distribution of `rating`. We noticed that it was skewed left, sh
 <iframe
   src="/RecipeAnalysis/assets/ratingdist.html"
   width="800"
-  height="400"
+  height="450"
   frameborder="0"
 ></iframe>
 
@@ -77,7 +77,7 @@ We examined the `hours` column as it relates to the number of ingredients(`n_ing
 <iframe
   src="/RecipeAnalysis/assets/hrsingredients.html"
   width="600"
-  height="400"
+  height="450"
   frameborder="0"
 ></iframe>
 
@@ -118,7 +118,7 @@ The observed statistic turned out to be 51.452, as shown on the red line. Our p-
 <iframe
   src="/RecipeAnalysis/assets/missingminutes.html"
   width="800"
-  height="400"
+  height="450"
   frameborder="0"
 ></iframe>
 
@@ -133,7 +133,7 @@ The observed statistic turned out to be 1.339, as shown on the red line. Our p-v
 <iframe
   src="/RecipeAnalysis/assets/missingnsteps.html"
   width="800"
-  height="400"
+  height="450"
   frameborder="0"
 ></iframe>
 
@@ -193,6 +193,6 @@ Our observed statistic was 8.402. Our p-value was 0.0. Thus, we reject the null 
 <iframe
   src="/RecipeAnalysis/assets/fairness.html"
   width="800"
-  height="400"
+  height="450"
   frameborder="0"
 ></iframe>
